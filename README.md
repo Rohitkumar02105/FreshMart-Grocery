@@ -28,5 +28,5 @@ It allows users to register, login, browse products, place orders, and manage th
 
 Clone the repository:
 ```bash
-git clone https://github.com/Rohitkumar2105/FreshMart.git
+git clone https://github.com/Rohitkumar02105/FreshMart.git
 cd FreshMart
