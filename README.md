@@ -1,32 +1,58 @@
-# FreshMart 🛒
+# FreshMart
 
-FreshMart is a **MERN stack grocery delivery web application** with full backend and frontend integration.  
-It allows users to register, login, browse products, place orders, and manage their account securely.
+FreshMart is a MERN stack grocery delivery web application. Users can browse
+products, add items to a cart, register, login, and place authenticated orders.
 
----
+## Features
 
-## 🚀 Features
-- **User Authentication** (JWT + bcryptjs)
-- **Product Management** (MongoDB + Mongoose)
-- **Order System** (secure routes with middleware)
-- **Environment Config** using dotenv
-- **RESTful APIs** built with Express.js
-- **Frontend Integration** with React (coming soon)
+- React storefront with responsive product cards
+- Cart summary and item totals
+- JWT authentication with bcrypt password hashing
+- Express REST APIs for users, products, and orders
+- MongoDB/Mongoose support
+- Demo product fallback when MongoDB is not configured
 
----
+## Tech Stack
 
-## 🛠️ Tech Stack
-- **Frontend:** React.js  
-- **Backend:** Node.js, Express.js  
-- **Database:** MongoDB (Mongoose ODM)  
-- **Authentication:** JWT, bcryptjs  
-- **Environment:** dotenv, nodemon  
+- Frontend: React, React Router, Axios
+- Backend: Node.js, Express.js
+- Database: MongoDB with Mongoose
+- Auth: JWT and bcryptjs
 
----
+## Setup
 
-## ⚙️ Installation
+Install backend dependencies:
 
-Clone the repository:
 ```bash
-git clone https://github.com/Rohitkumar02105/FreshMart.git
-cd FreshMart
+npm install
+```
+
+Install frontend dependencies:
+
+```bash
+cd frontend
+npm install
+```
+
+Create a `.env` file from `.env.example`:
+
+```bash
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=change_this_secret
+```
+
+Run backend:
+
+```bash
+npm run dev
+```
+
+Run frontend in another terminal:
+
+```bash
+cd frontend
+npm start
+```
+
+The frontend proxies API calls to `http://localhost:5000`.
