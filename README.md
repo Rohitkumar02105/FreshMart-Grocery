@@ -1,4 +1,4 @@
-# FreshMart
+# FreshMart-Grocery
 
 FreshMart is a MERN stack grocery delivery web application. Users can browse
 products, add items to a cart, register, login, and place authenticated orders.
