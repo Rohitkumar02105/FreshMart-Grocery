@@ -3,11 +3,11 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
-function Signup() {
+function Login() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (event) => {
@@ -15,25 +15,18 @@ function Signup() {
     setMessage("");
 
     try {
-      const { data } = await axios.post(`${API_BASE_URL}/api/users/register`, form);
+      const { data } = await axios.post(`${API_BASE_URL}/api/users/login`, form);
       localStorage.setItem("freshmartUser", JSON.stringify(data));
       navigate("/");
     } catch (error) {
-      setMessage(error.response?.data?.message || "Signup failed");
+      setMessage(error.response?.data?.message || "Login failed");
     }
   };
 
   return (
     <div className="auth-container">
       <form className="auth-box" onSubmit={handleSubmit}>
-        <h1>Create Account</h1>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={form.name}
-          onChange={(event) => setForm({ ...form, name: event.target.value })}
-          required
-        />
+        <h1>Login</h1>
         <input
           type="email"
           placeholder="Enter Email"
@@ -47,16 +40,15 @@ function Signup() {
           value={form.password}
           onChange={(event) => setForm({ ...form, password: event.target.value })}
           required
-          minLength="6"
         />
         {message && <p className="form-message">{message}</p>}
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
         <p>
-          Already have an account? <Link to="/login">Login</Link>
+          Don't have an account? <Link to="/signup">Create Account</Link>
         </p>
       </form>
     </div>
   );
 }
 
-export default Signup;
+export default Login;

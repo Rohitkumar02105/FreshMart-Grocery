@@ -55,4 +55,10 @@ cd frontend
 npm start
 ```
 
-The frontend proxies API calls to `http://localhost:5000`.
+The Vite development server proxies API calls to `http://localhost:5000`.
+
+## Security
+
+- Set a strong `JWT_SECRET`; authentication is disabled when it is missing.
+- Keep `.env` files out of Git.
+- Run `npm audit` in both the root and `frontend/` before releases.

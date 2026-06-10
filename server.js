@@ -20,6 +20,10 @@ if (process.env.MONGO_URI) {
   console.warn("MONGO_URI not set. FreshMart will serve demo products only.");
 }
 
+if (!process.env.JWT_SECRET) {
+  console.warn("JWT_SECRET not set. Authentication endpoints are unavailable.");
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -31,7 +35,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 
-const buildPath = path.join(__dirname, "frontend", "build");
+const buildPath = path.join(__dirname, "frontend", "dist");
 app.use(express.static(buildPath));
 
 app.use((req, res) => {

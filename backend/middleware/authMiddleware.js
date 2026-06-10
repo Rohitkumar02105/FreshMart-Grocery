@@ -6,8 +6,12 @@ const protect = async (req, res, next) => {
 
   if (req.headers.authorization?.startsWith("Bearer")) {
     try {
+      if (!process.env.JWT_SECRET) {
+        return res.status(503).json({ message: "Authentication is not configured" });
+      }
+
       token = req.headers.authorization.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || "freshmart-dev-secret");
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.id).select("-password");
 
       if (!req.user) {
